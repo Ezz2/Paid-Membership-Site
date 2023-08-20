@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Ezz Fitness</title>
+        <!-- Bootstrap core CSS -->
+        
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <!-- Custom styles for this template -->
+        <link href="{% static 'pricing.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="mb-3 navbar navbar-white navbar-expand bg-white border-bottom shadow-sm">
+            <a class="nav-link text-dark" href="/">Fitness Club</a> 
+            <div class="navbar-collapse collapse justify-content-end">
+                <ul class="nav navbar-nav flex-row justify-content-end m-1 flex-nowrap">
+                    {% if user.is_authenticated %}
+                        {% if request.user.customer.membership %}
+                            <li class="nav-item">
+                                <a class="p-2 text-dark nav-link" href="{% url 'settings' %}">Cancel Subscription</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="p-2 text-dark nav-link" href="{% url 'settings' %}">Get Premium</a>
+                            </li>
+                        {% endif %}
+                            <li class="nav-item">
+                                <a class="btn btn-outline-primary nav-link" href="{% url 'logout' %}" style="margin-left: 15px;">Log Out</a>
+                            </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary nav-link" href="{% url 'login' %}">Log In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-outline-primary nav-link" href="{% url 'signup' %}" style="margin-left: 15px;">Sign Up</a>
+                        </li>
+                    {% endif%}
+                </ul>
+            </div>
+        </nav>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

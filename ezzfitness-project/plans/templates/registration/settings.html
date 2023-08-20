@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card text-center" style="margin-top: 60px;"></div>
+    <div class="card-header" style="padding: 20px; border-radius: 20px;"></div>
+    <div class="card-body text-dark">
+        <br>
+        {% if cancel_at_period_end %}
+            <h5 class="text-center">Your Membership Subscription Was Canceled</h5>
+            <a href="/" class="btn btn-primary">Back</a>
+            <a class="btn btn-primary" href="{% url 'join' %}" >Do you want a new membership?</a>
+        {% elif membership %}
+            <form action="{% url 'settings' %}" method="POST">
+                {% csrf_token %}
+                <h5 class="card-text">Are You Sure You Would Cancel The Premium Subscriptions?<span style="font-weight:300; font-size:25px;"><br>You Can't Retrive It, Your Account Will Be Deleted When You Cancel The Subscription!!</span></h5>
+                <input  class="btn btn-outline-primary btn-sm btn-block" type="submit" value="Cancel The Subscription">
+                <a href="/" class="btn btn-outline-dark btn-sm btn-block" style="border-radius: 15px;">No, Take Me Back</a>
+            </form>
+        {% else %}
+                <a class="p-2 text-dark" href="{% url 'join' %}">Get Premium</a>
+        {% endif  %}
+    </div>
+    <div class="card-header" style="padding: 20px; border-radius: 20px;"></div>
+{% endblock %}

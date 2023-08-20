@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{request.user}}</h1>
+    <h1>{{request.user.customer.stripe_subscription_id}}</h1>
+{% endblock  %}
