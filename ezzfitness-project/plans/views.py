@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from .models import FitnessPlan, Customer
 from .forms import CustomSignupForm
 
-stripe.api_key = "sk_test_51NfoavAOoyyhXMiqRawiy6SoIYXdPKf7j8zclCaPknRF1yquqjZ4YNTibVvZMpj0nscOjwM8rF1OMVZyexTAPj1n006vxAXHH4"
+stripe.api_key = ""
 
 # @user_passes_test(lambda u: u.is_active)
 # def updateaccounts(request):
